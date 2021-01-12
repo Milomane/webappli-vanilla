@@ -75,9 +75,9 @@ function startup() {
 
             acl.addEventListener('reading', () => {
                 
-            xAcc = "X-axis " + acl.x;
-            yAcc = "  Y-axis " + acl.y;
-            zAcc = "  Z-axis " + acl.z;
+            xAcc = acl.x;
+            yAcc = acl.y;
+            zAcc = acl.z;
             });
 
             acl.start();
