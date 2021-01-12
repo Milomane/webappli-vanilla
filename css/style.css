@@ -7,6 +7,7 @@ body {
 nav {
     margin: 0px;
     padding:0px;
+    text-underline-offset: 0;
     overflow: hidden;
     height: 60px;
 }

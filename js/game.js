@@ -69,9 +69,9 @@ function startup() {
 
             acl.addEventListener('reading', () => {
                 
-            debugText.textContent += "X-axis " + acl.x;
-            debugText.textContent += "  Y-axis " + acl.y;
-            debugText.textContent += "  Z-axis " + acl.z;
+            debugText.textContent += "X-axis " + Math.round(acl.x);
+            debugText.textContent += "  Y-axis " + Math.round(acl.y);
+            debugText.textContent += "  Z-axis " + Math.round(acl.z)
             });
 
             acl.start();
@@ -86,7 +86,7 @@ document.addEventListener("DOMContentLoaded", startup);
 
 function gameLoop() {
     frame += 1
-    debugText.textContent = "";
+    debugText.textContent = "Debug console : ";
 
     canvas.width = document.documentElement.clientWidth || document.body.clientWidth;
     canvas.height = document.documentElement.clientHeight || document.body.clientHeight;
