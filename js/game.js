@@ -7,6 +7,9 @@ let variable = "Hello"
 let img = new Image();
 img.src = 'img/DVD_video_logo.png';
 
+let debugText = new Text();
+debugText = document.getElementById('debug');
+
 
 function rect_create(x, y, xSpeed, ySpeed, xSize, ySize, color, img) {
     let square = {
@@ -56,26 +59,34 @@ function startup() {
     var el = document.getElementById("canvas1");
 
     //el.addEventListener("touchstart", handleStart, false);
-    el.addEventListener("touchend", handleEnd, false);
     el.addEventListener("mouseup", handleEndClick, false);
     //el.addEventListener("touchcancel", handleCancel, false);
     //el.addEventListener("touchmove", handleMove, false);
 
-    let acl = new Accelerometer({frequency: 60});
+    navigator.permissions.query({name:'accelerometer'}).then(function(result) {
+        if (result.state == 'granted') {
+            let acl = new Accelerometer({frequency: 60});
 
-    acl.addEventListener('reading', () => {
-    console.log("Acceleration along the X-axis " + acl.x);
-    console.log("Acceleration along the Y-axis " + acl.y);
-    console.log("Acceleration along the Z-axis " + acl.z);
+            acl.addEventListener('reading', () => {
+                
+            debugText.textContent += "X-axis " + acl.x;
+            debugText.textContent += "  Y-axis " + acl.y;
+            debugText.textContent += "  Z-axis " + acl.z;
+            });
+
+            acl.start();
+        } else if (result.state == 'prompt') {
+
+        }
+        // Don't do anything if the permission was denied.
     });
-
-acl.start();
 }
 
 document.addEventListener("DOMContentLoaded", startup);
 
 function gameLoop() {
     frame += 1
+    debugText.textContent = "";
 
     canvas.width = document.documentElement.clientWidth || document.body.clientWidth;
     canvas.height = document.documentElement.clientHeight || document.body.clientHeight;

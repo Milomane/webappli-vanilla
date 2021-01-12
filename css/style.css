@@ -3,3 +3,10 @@ body {
     padding:0px;
     overflow: hidden;
 }
+
+nav {
+    margin: 0px;
+    padding:0px;
+    overflow: hidden;
+    height: 60px;
+}
