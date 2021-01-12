@@ -10,6 +10,12 @@ img.src = 'img/DVD_video_logo.png';
 let debugText = new Text();
 debugText = document.getElementById('debug');
 
+let xAcc = 0;
+let yAcc = 0;
+let zAcc = 0;
+
+let useAcc = true;
+
 
 function rect_create(x, y, xSpeed, ySpeed, xSize, ySize, color, img) {
     let square = {
@@ -69,9 +75,9 @@ function startup() {
 
             acl.addEventListener('reading', () => {
                 
-            debugText.textContent += "X-axis " + Math.round(acl.x);
-            debugText.textContent += "  Y-axis " + Math.round(acl.y);
-            debugText.textContent += "  Z-axis " + Math.round(acl.z)
+            xAcc = "X-axis " + acl.x;
+            yAcc = "  Y-axis " + acl.y;
+            zAcc = "  Z-axis " + acl.z;
             });
 
             acl.start();
@@ -87,9 +93,10 @@ document.addEventListener("DOMContentLoaded", startup);
 function gameLoop() {
     frame += 1
     debugText.textContent = "Debug console : ";
+    debugText.textContent += "xAcc : " + Math.round(xAcc) + "  yAcc : " + Math.round(yAcc) + "  zAcc : " + Math.round(zAcc);
 
     canvas.width = document.documentElement.clientWidth || document.body.clientWidth;
-    canvas.height = document.documentElement.clientHeight || document.body.clientHeight;
+    canvas.height = document.documentElement.clientHeight - 60 || document.body.clientHeight - 60;
 
     ctx.fillStyle = 'white'
     ctx.fillRect(0, 0, canvas.clientWidth, canvas.clientHeight)
@@ -146,6 +153,11 @@ function getRandomArbitrary(min, max)
 }
 
 function moveCircle(circle) {
+    if (useAcc) {
+        circle.xSPeed = -xAcc;
+        circle.ySpeed = yAcc;
+    }
+
     if (circle.x + circle.radius + circle.xSpeed >= canvas.clientWidth) {
         circle.x = canvas.clientWidth - circle.radius;
         circle.xSpeed = -2;
@@ -175,6 +187,11 @@ function moveCircle(circle) {
 
 
 function moveSquares(info) {
+    if (useAcc) {
+        info.xSPeed = -xAcc;
+        info.ySpeed = yAcc;
+    }
+
     if (info.x + info.xSize + info.xSpeed >= canvas.clientWidth) {
         info.x = canvas.clientWidth - info.xSize;
         info.xSpeed = -2;
