@@ -14,7 +14,8 @@ let xAcc = 0;
 let yAcc = 0;
 let zAcc = 0;
 
-let useAcc = true;
+let rectUseAcc = false;
+let circleUseAcc = true;
 
 
 function rect_create(x, y, xSpeed, ySpeed, xSize, ySize, color, img) {
@@ -45,7 +46,7 @@ function circle_create(x, y, xSpeed, ySpeed, radius, color) {
 
 let rect = rect_create(200, 100, -2, 2, 100, 60, 'red', true)
 let rect1 = rect_create(100, 200, 4, 2, 30, 40, 'blue', false)
-let circle = circle_create(200, 200, 2, -2, 50, randomColor())
+let circle = circle_create(200, 200, 0, 0, 50, randomColor())
 
 let gameobjects = [
     rect,
@@ -74,7 +75,6 @@ function startup() {
             let acl = new Accelerometer({frequency: 60});
 
             acl.addEventListener('reading', () => {
-                
             xAcc = acl.x;
             yAcc = acl.y;
             zAcc = acl.z;
@@ -136,15 +136,21 @@ function handleEndClick(evt)
     let ySpeed = getRandomArbitrary(-2, 2);
 
     let xSize = getRandomArbitrary(10, 200);
-    let ySize = getRandomArbitrary(10, 200);
+    //let ySize = getRandomArbitrary(10, 200);
 
-    let xPos = evt.offsetX - xSize/2;
-    let yPos = evt.offsetY - ySize/2;
+    //let xPos = evt.offsetX - xSize/2;
+    //let yPos = evt.offsetY - ySize/2;
+    let xPos = evt.offsetX;
+    let yPos = evt.offsetY;
 
     let color = randomColor();
 
-    let newRect = rect_create(xPos, yPos, xSPeed, ySpeed, xSize, ySize, color, false)
-    gameobjects.push(newRect)
+    //let newRect = cir(xPos, yPos, xSPeed, ySpeed, xSize, ySize, color, false)
+    let newCircle = circle_create(xPos, yPos, /*xSPeed, ySpeed,*/ 0, 0, xSize / 2, color, false)
+
+
+    //gameobjects.push(newRect)
+    circleobjects.push(newCircle)
 }
 
 function getRandomArbitrary(min, max) 
@@ -153,7 +159,7 @@ function getRandomArbitrary(min, max)
 }
 
 function moveCircle(circle) {
-    if (useAcc) {
+    if (circleUseAcc) {
         circle.xSPeed = -xAcc;
         circle.ySpeed = yAcc;
     }
@@ -187,7 +193,7 @@ function moveCircle(circle) {
 
 
 function moveSquares(info) {
-    if (useAcc) {
+    if (rectUseAcc) {
         info.xSPeed = -xAcc;
         info.ySpeed = yAcc;
     }
