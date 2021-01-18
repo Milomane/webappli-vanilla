@@ -160,7 +160,7 @@ function getRandomArbitrary(min, max)
 
 function moveCircle(circle) {
     if (circleUseAcc) {
-        circle.xSPeed = xAcc * -1;
+        circle.xSPeed = xAcc;
         circle.ySpeed = yAcc;
     }
 
@@ -194,8 +194,14 @@ function moveCircle(circle) {
         }
     }
 
-    circle.x += circle.xSpeed;
-    circle.y += circle.ySpeed;
+    if (circleUseAcc) {
+        circle.x += xAcc;
+        circle.y += yAcc;
+    } else {
+        circle.x += circle.xSpeed;
+        circle.y += circle.ySpeed;
+    }
+    
     
     ctx.fillStyle = circle.color;
     ctx.beginPath();
