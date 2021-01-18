@@ -93,7 +93,7 @@ document.addEventListener("DOMContentLoaded", startup);
 function gameLoop() {
     frame += 1
     debugText.textContent = "Debug console : ";
-    debugText.textContent += "xAcc : " + Math.round(xAcc) + "  yAcc : " + Math.round(yAcc) + "  zAcc : " + Math.round(zAcc);
+    debugText.textContent += "xAcc : " + Math.round(xAcc) + "  yAcc : " + Math.round(yAcc) + "  zAcc : " + Math.round(zAcc) + "    V0.1";
 
     canvas.width = document.documentElement.clientWidth || document.body.clientWidth;
     canvas.height = document.documentElement.clientHeight - 60 || document.body.clientHeight - 60;
