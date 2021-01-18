@@ -167,14 +167,14 @@ function moveCircle(circle) {
     if (circle.x + circle.radius + circle.xSpeed >= canvas.clientWidth) {
         circle.x = canvas.clientWidth - circle.radius;
 
-        if (circleUseAcc) {
+        if (!circleUseAcc) {
             circle.xSpeed = -2;
         }
     }
     if (circle.x - circle.radius + circle.xSpeed <= 0) {
         circle.x = 0 + circle.radius;
 
-        if (circleUseAcc) {
+        if (!circleUseAcc) {
             circle.xSpeed = 2;
         }
     }
@@ -182,14 +182,14 @@ function moveCircle(circle) {
     if (circle.y + circle.radius + circle.ySpeed >= canvas.clientHeight) {
         circle.y = canvas.clientHeight - circle.radius;
 
-        if (circleUseAcc) {
+        if (!circleUseAcc) {
             circle.ySpeed = -2;
         }
     }
     if (circle.y - circle.radius + circle.ySpeed <= 0) {
         circle.y = 0 + circle.radius;
 
-        if (circleUseAcc) {
+        if (!circleUseAcc) {
             circle.ySpeed = 2;
         }
     }
@@ -219,7 +219,7 @@ function moveSquares(info) {
     if (info.x + info.xSize + info.xSpeed >= canvas.clientWidth) {
         info.x = canvas.clientWidth - info.xSize;
 
-        if (rectUseAcc) {
+        if (!rectUseAcc) {
             info.xSpeed = -2;
             info.color = randomColor();
         }
@@ -227,7 +227,7 @@ function moveSquares(info) {
     if (info.x + info.xSpeed <= 0) {
         info.x = 0;
 
-        if (rectUseAcc) {
+        if (!rectUseAcc) {
             info.xSpeed = 2;
             info.color = randomColor();
         }
@@ -236,7 +236,7 @@ function moveSquares(info) {
     if (info.y + info.ySize + info.ySpeed >= canvas.clientHeight) {
         info.y = canvas.clientHeight - info.ySize;
 
-        if (rectUseAcc) {
+        if (!rectUseAcc) {
             info.ySpeed = -2;
             info.color = randomColor();
         }
@@ -244,7 +244,7 @@ function moveSquares(info) {
     if (info.y + info.ySpeed <= 0) {
         info.y = 0;
 
-        if (rectUseAcc) {
+        if (!rectUseAcc) {
             info.ySpeed = 2;
             info.color = randomColor();
         }
