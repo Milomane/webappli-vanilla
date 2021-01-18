@@ -160,8 +160,8 @@ function getRandomArbitrary(min, max)
 
 function moveCircle(circle) {
     if (circleUseAcc) {
-        circle.xSPeed = xAcc * -1;
-        circle.ySpeed = yAcc;
+        circle.x += xAcc * -1;
+        circle.y += yAcc;
     }
 
     if (circle.x + circle.radius + circle.xSpeed >= canvas.clientWidth) {
@@ -194,10 +194,7 @@ function moveCircle(circle) {
         }
     }
 
-    if (circleUseAcc) {
-        circle.x += circle.xSpeed;
-        circle.y += circle.ySpeed;
-    } else {
+    if (!circleUseAcc) {
         circle.x += circle.xSpeed;
         circle.y += circle.ySpeed;
     }
