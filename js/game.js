@@ -160,7 +160,7 @@ function getRandomArbitrary(min, max)
 
 function moveCircle(circle) {
     if (circleUseAcc) {
-        circle.xSPeed = -xAcc;
+        circle.xSPeed = xAcc * -1;
         circle.ySpeed = yAcc;
     }
 
