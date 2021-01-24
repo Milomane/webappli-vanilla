@@ -93,25 +93,30 @@ function startup() {
         }
         // Don't do anything if the permission was denied.
     });
+
+    canvas.width = document.documentElement.clientWidth || document.body.clientWidth;
+    canvas.height = document.documentElement.clientHeight - 60 || document.body.clientHeight - 60;
+
+    ctx.fillStyle = 'Black'
+    ctx.fillRect(0, 0, canvas.clientWidth, canvas.clientHeight)
 }
 
 document.addEventListener("DOMContentLoaded", startup);
 
 function gameLoop() {
+
     frame += 1
     debugText.textContent = "Debug console : ";
     debugText.textContent += "xAcc : " + Math.round(xAcc) + "  yAcc : " + Math.round(yAcc) + "  zAcc : " + Math.round(zAcc) + "    V0.7";
 
-    canvas.width = document.documentElement.clientWidth || document.body.clientWidth;
-    canvas.height = document.documentElement.clientHeight - 60 || document.body.clientHeight - 60;
     
+
 
     gameobjects.forEach(
     square => {
         moveSquares(square);
     });
 
-    
 
     //moveCircleWithGravity(60/1000, circleobjects);
 
@@ -121,6 +126,8 @@ function gameLoop() {
     circle => {
         moveCircle(circle);
     });
+
+    
 }
 
 function handleEnd(evt)
@@ -323,6 +330,7 @@ function moveSquares(info) {
     }
     else 
     {
+        /*
         // draw color
         ctx.fillStyle = info.color;
         ctx.fillRect(info.x, info.y, info.xSize, info.ySize);
@@ -333,6 +341,7 @@ function moveSquares(info) {
         ctx.drawImage(img, info.x, info.y, info.xSize, info.ySize);
 
         ctx.globalCompositeOperation = "source-over";
+        */
     }
 }
 
