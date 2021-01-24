@@ -111,8 +111,7 @@ function gameLoop() {
         moveSquares(square);
     });
 
-    ctx.fillStyle = 'Black'
-    ctx.fillRect(0, 0, canvas.clientWidth, canvas.clientHeight)
+    
 
     //moveCircleWithGravity(60/1000, circleobjects);
 
