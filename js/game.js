@@ -107,7 +107,7 @@ function gameLoop() {
 
     frame += 1
     debugText.textContent = "Debug console : ";
-    debugText.textContent += "xAcc : " + Math.round(xAcc) + "  yAcc : " + Math.round(yAcc) + "  zAcc : " + Math.round(zAcc) + "    V0.7";
+    debugText.textContent += "xAcc : " + Math.round(xAcc) + "  yAcc : " + Math.round(yAcc) + "  zAcc : " + Math.round(zAcc) + "    V1.1";
 
     
 
