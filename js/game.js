@@ -93,6 +93,8 @@ function startup() {
         }
         // Don't do anything if the permission was denied.
     });
+
+    ctx.fillStyle = 'black'
 }
 
 document.addEventListener("DOMContentLoaded", startup);
@@ -105,7 +107,7 @@ function gameLoop() {
     canvas.width = document.documentElement.clientWidth || document.body.clientWidth;
     canvas.height = document.documentElement.clientHeight - 60 || document.body.clientHeight - 60;
 
-    ctx.fillStyle = 'white'
+    
     ctx.fillRect(0, 0, canvas.clientWidth, canvas.clientHeight)
 
     gameobjects.forEach(
